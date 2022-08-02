@@ -165,11 +165,15 @@ test("sign-up duplicated and show error toast", async () => {
   userEvent.type(passwordField, "random password");
   userEvent.click(fireBtn);
 
-  await waitFor(() => {
-    const errorToast = screen.getAllByRole("alert");
-    for (let i = 0; i < errorToast.length; i++) {
-      const toastData = errorToast[i];
+  await waitFor(async () => {
+    const errorToastArr = screen.getAllByRole("alert");
+    for (let i = 0; i < errorToastArr.length; i++) {
+      const toastData = errorToastArr[i];
       console.log("errorToast arr:", toastData.innerHTML);
     }
+
+    // const errorToast = await screen.findByRole("alert", {
+    //   name: /email already used/i,
+    // });
   });
 });
