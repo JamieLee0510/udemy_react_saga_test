@@ -79,27 +79,24 @@ const duplicatedEmailSignUpFailure = (
 test.each([
   {
     testName: "bad email&password while sign-in",
-    // eslint-disable-next-line prettier/prettier
     signUrl: endpoints.signIn,
     fireBtnMatcher: /sign in/i,
     mockHandler: badParamsFailure,
   },
   {
     testName: "server error while sign-in",
-    // eslint-disable-next-line prettier/prettier
     signUrl: endpoints.signIn,
     fireBtnMatcher: /sign in/i,
     mockHandler: serverFailure,
   },
   {
-    testName: "duplicated email while sign-up", // eslint-disable-next-line prettier/prettier
+    testName: "duplicated email while sign-up",
     signUrl: endpoints.signUp,
     fireBtnMatcher: /sign up/i,
     mockHandler: duplicatedEmailSignUpFailure,
   },
   {
     testName: "server error while sign-up",
-    // eslint-disable-next-line prettier/prettier
     signUrl: endpoints.signUp,
     fireBtnMatcher: /sign up/i,
     mockHandler: serverFailure,
@@ -141,7 +138,7 @@ test.each([
   });
 });
 
-test("sign-up duplicated and show error toast", async () => {
+test.only("sign-up duplicated and show error toast", async () => {
   const errorHandler = rest.post(
     `${baseUrl}/${endpoints.signUp}`,
     (req, res, ctx) =>
